@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Siyi Zhou | Safeguarding Human-AI Interaction</title>
+<meta name="description" content="Siyi Zhou, PhD student at USC Annenberg. Research on safeguarding human-AI interaction, LLM guardrails, content moderation, and AI persuasion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7; --surface:#ffffff; --ink:#1c1b19; --muted:#5f5b54; --line:#e6e2da;
+  --accent:#9a2b2b; --accent-soft:#f5e9e6; --tag:#f0ede6;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#141312; --surface:#1c1b19; --ink:#ece8e1; --muted:#a8a197; --line:#2e2c29;
+         --accent:#e07a6c; --accent-soft:#2a1f1d; --tag:#262421; }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:56px}
+nav .name{font-family:Fraunces,serif;font-weight:600;color:var(--ink)}
+nav ul{display:flex;gap:22px;list-style:none;font-size:14px}
+nav ul a{color:var(--muted)}
+nav ul a:hover{color:var(--ink);text-decoration:none}
+
+/* hero */
+header{padding:84px 0 56px}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+h1{font-family:Fraunces,serif;font-weight:600;font-size:clamp(34px,6vw,52px);line-height:1.1;letter-spacing:-.01em;margin-bottom:20px}
+.lede{font-size:19px;color:var(--muted);max-width:640px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-block;padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:500;color:var(--ink);background:var(--surface)}
+.btn:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{color:#fff;opacity:.9}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-family:Fraunces,serif;font-weight:600;font-size:28px;margin-bottom:24px}
+h3{font-size:17px;font-weight:600;line-height:1.4}
+p+p{margin-top:14px}
+
+/* research themes */
+.themes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.theme{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.theme .num{font-family:Fraunces,serif;color:var(--accent);font-size:22px;margin-bottom:6px}
+.theme p{color:var(--muted);font-size:15px;margin-top:8px}
+
+/* works */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filters button{font:inherit;font-size:13px;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.work{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:120px 1fr;gap:20px}
+.work:last-child{border-bottom:none}
+.work .meta{font-size:13px;color:var(--muted)}
+.status{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-top:6px}
+.work .authors{font-size:14px;color:var(--muted);margin-top:4px}
+.work .authors b{color:var(--ink);font-weight:600}
+.work p.sum{font-size:15px;margin-top:8px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tags span{font-size:12px;padding:2px 9px;border-radius:6px;background:var(--tag);color:var(--muted)}
+.work.hide{display:none}
+
+/* bio */
+.bio{display:grid;grid-template-columns:1fr 240px;gap:40px}
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;font-size:14px;align-self:start}
+.facts dt{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-top:12px}
+.facts dt:first-child{margin-top:0}
+.facts dd{margin-top:2px}
+
+footer{padding:40px 0 60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+@media (max-width:640px){
+  nav ul{gap:14px}
+  nav ul li:nth-child(n+4){display:none}
+  header{padding:56px 0 40px}
+  .work{grid-template-columns:1fr;gap:6px}
+  .bio{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="name" href="#">Siyi Zhou</a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="wrap">
+  <div class="eyebrow">PhD Student · USC Annenberg</div>
+  <h1>Safeguarding human&#8209;AI interaction.</h1>
+  <p class="lede">I study how AI systems and online platforms intervene when conversations turn harmful or contested, and how people respond: whether they comply, self&#8209;censor, resist, or change their minds. My work combines large&#8209;scale computational analysis, LLM evaluation, and controlled experiments.</p>
+  <div class="links">
+    <a class="btn primary" href="#works">See my work</a>
+    <a class="btn" href="mailto:YOUR_EMAIL@usc.edu">Email</a>
+    <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a>
+    <a class="btn" href="https://github.com/serenalyoko" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="cv.pdf" target="_blank" rel="noopener">CV</a>
+  </div>
+</header>
+
+<section id="research">
+  <div class="wrap">
+    <h2>Research</h2>
+    <div class="themes">
+      <div class="theme">
+        <div class="num">01</div>
+        <h3>LLM guardrails and safeguards</h3>
+        <p>How commercial models refuse, redirect, or comply on controversial and harmful requests, and whether those protections hold up evenly across topics, user roles, and personas.</p>
+      </div>
+      <div class="theme">
+        <div class="num">02</div>
+        <h3>Platform moderation and user response</h3>
+        <p>How removal explanations, moderator type, and message framing shape compliance, self&#8209;censorship, and resistance at the scale of millions of moderation events.</p>
+      </div>
+      <div class="theme">
+        <div class="num">03</div>
+        <h3>Bi&#8209;directional influence</h3>
+        <p>How AI persuades people and how people pull AI toward agreement: sycophancy, personalization, and stance change in human&#8209;AI conversation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <h2>Selected Works</h2>
+    <div class="filters" role="group" aria-label="Filter works">
+      <button class="on" data-f="all">All</button>
+      <button data-f="guardrails">AI guardrails</button>
+      <button data-f="moderation">Moderation</button>
+      <button data-f="influence">Persuasion &amp; influence</button>
+      <button data-f="safety">Online safety</button>
+    </div>
+
+    <article class="work" data-c="moderation">
+      <div class="meta">2026<br><span class="status">Under review</span></div>
+      <div>
+        <h3>Communal Moderation: How Moderator Type and Message Framing Shape User Responses to Content Removal on Reddit</h3>
+        <div class="authors"><b>Siyi Zhou</b>, Lindsay Young, Marlon Twyman, Emilio Ferrara</div>
+        <p class="sum">Analyzes 11.8M moderation events across 9.3M users and 61K subreddits (2021 to 2025). Bot removals drive higher compliance and less self&#8209;censorship than human removals, but for harmful or illegal content they provoke roughly four times more resistance; prosocial, emotionally direct framing works best for severe violations.</p>
+        <div class="tags"><span>Psychological reactance</span><span>Large-scale Reddit data</span><span>GLMs</span><span>LIWC</span></div>
+      </div>
+    </article>
+
+    <article class="work" data-c="guardrails">
+      <div class="meta">2026<br><span class="status">In progress</span></div>
+      <div>
+        <h3>Probing LLM Guardrails Across Models, Roles, and Risk Categories</h3>
+        <div class="authors"><b>Siyi Zhou</b>, Emilio Ferrara</div>
+        <p class="sum">A cross&#8209;model audit of six commercial LLMs (Claude, GPT, Gemini, Grok, DeepSeek, Qwen) using a probe dataset that crosses 96 controversial topics in 18 risk categories with five use&#8209;case framings: companion, advisor, content editor, content generator, and information retrieval. Responses are coded with a refusal&#8209;to&#8209;compliance taxonomy using LLM judges validated against human coders.</p>
+        <div class="tags"><span>LLM evaluation</span><span>LLM-as-judge</span><span>Intercoder reliability</span></div>
+      </div>
+    </article>
+
+    <article class="work" data-c="guardrails">
+      <div class="meta">2026<br><span class="status">In preparation</span></div>
+      <div>
+        <h3>Unequal Protection? Bias and Robustness of Hate&#8209;Speech Guardrails in LLMs</h3>
+        <div class="authors"><b>Siyi Zhou</b>, Emilio Ferrara</div>
+        <p class="sum">Tests whether LLM guardrails protect different target groups equally and how easily persona framing bypasses them, mapping model safeguarding strategies onto counter&#8209;speech typologies. Invited submission to <i>Digital Hate Review</i>.</p>
+        <div class="tags"><span>Hate speech</span><span>Persona jailbreaks</span><span>Fairness</span></div>
+      </div>
+    </article>
+
+    <article class="work" data-c="guardrails moderation">
+      <div class="meta">2026<br><span class="status">In progress</span></div>
+      <div>
+        <h3>Safeguarding: AI Refusals vs. Platform Moderation</h3>
+        <div class="authors"><b>Siyi Zhou</b></div>
+        <p class="sum">Compares preventive safeguards in AI (refusal, redirection) with retrospective platform interventions (removal, suspension). Asks which is more persuasive, which backfires, and which is more likely to shift how people see the underlying issue, given that platform moderation signals a community norm while an AI refusal reads as one&#8209;on&#8209;one disagreement.</p>
+        <div class="tags"><span>Compliance</span><span>Backfire effects</span><span>Experimental design</span></div>
+      </div>
+    </article>
+
+    <article class="work" data-c="guardrails">
+      <div class="meta">2025<br><span class="status">Presented</span></div>
+      <div>
+        <h3>Information Suppression in Large Language Models</h3>
+        <div class="authors"><b>Siyi Zhou</b>, et al.</div>
+        <p class="sum">Examines censorship behavior in DeepSeek and how politically sensitive information is withheld or reshaped in model outputs.</p>
+        <div class="tags"><span>Censorship</span><span>LLM auditing</span></div>
+      </div>
+    </article>
+
+    <article class="work" data-c="influence">
+      <div class="meta">2026<br><span class="status">In progress</span></div>
+      <div>
+        <h3>Persuasion and Sycophancy in Human&#8209;LLM Disagreement</h3>
+        <div class="authors"><b>Siyi Zhou</b>, Emilio Ferrara</div>
+        <p class="sum">A large human&#8209;subjects experiment (target N = 2,000) in which an LLM is randomized to agree, disagree, or take no preset stance relative to each participant's prior position across multiple sessions, measuring influence in both directions. Paired with ideological audits of LLMs on the Political Compass and Zuobiao frameworks.</p>
+        <div class="tags"><span>Randomized experiment</span><span>Sycophancy</span><span>Political stance</span></div>
+      </div>
+    </article>
+
+    <article class="work" data-c="influence">
+      <div class="meta">2026<br><span class="status">In progress</span></div>
+      <div>
+        <h3>AI Messages vs. Network Influence in Health Persuasion</h3>
+        <div class="authors"><b>Siyi Zhou</b></div>
+        <p class="sum">Compares AI&#8209;generated persuasive messages with messages from real friends for HPV vaccination, testing source redundancy versus independence: many independent ties, one repeated tie, or AI.</p>
+        <div class="tags"><span>Health communication</span><span>Social networks</span></div>
+      </div>
+    </article>
+
+    <article class="work" data-c="safety">
+      <div class="meta">2025<br><span class="status">ICWSM CySoc Workshop</span></div>
+      <div>
+        <h3>The Trafficker's Pitch: Detecting Human Trafficking Recruitment in Online Ads</h3>
+        <div class="authors"><b>Siyi Zhou</b>, et al., Emilio Ferrara</div>
+        <p class="sum">Crawled job, social media, and escort platforms, linked ads through phone&#8209;number co&#8209;occurrence networks, and built BERT and voting&#8209;ensemble classifiers to flag likely trafficking recruitment; network motif analysis reveals cross&#8209;platform patterns.</p>
+        <div class="tags"><span>BERT</span><span>Network motifs</span><span>Web crawling</span></div>
+      </div>
+    </article>
+
+    <article class="work" data-c="moderation">
+      <div class="meta">2026<br><span class="status">ICA 2026</span></div>
+      <div>
+        <h3>From Confusion to Crystallization: Online Discourse and the White Paper Movement</h3>
+        <div class="authors"><b>Siyi Zhou</b>, et al.</div>
+        <p class="sum">Semantic network analysis and Granger causality over Reddit discourse (56 issue&#8209;entity pairs) to trace how a confused online public crystallizes into a mobilized one.</p>
+        <div class="tags"><span>Semantic networks</span><span>Granger causality</span><span>Pushshift</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap bio">
+    <div>
+      <h2>About</h2>
+      <p>I am a PhD student at the USC Annenberg School for Communication and Journalism, advised by <a href="https://www.emilio.ferrara.name/" target="_blank" rel="noopener">Professor Emilio Ferrara</a>. My research sits at the intersection of computational social science, natural language processing, and human&#8209;AI interaction.</p>
+      <p>Before Annenberg I earned a master's degree in computer science, and I bring that engineering background to social questions: building data pipelines over hundreds of millions of records on HPC clusters, designing evaluation metrics and LLM&#8209;as&#8209;judge pipelines, and running randomized experiments with human participants.</p>
+      <p>The thread that ties my work together is a practical question: when a system steps in to keep a conversation safe, what actually works, for whom, and at what cost?</p>
+    </div>
+    <dl class="facts">
+      <dt>Position</dt><dd>PhD Student, USC Annenberg</dd>
+      <dt>Advisor</dt><dd>Emilio Ferrara</dd>
+      <dt>Background</dt><dd>M.S. Computer Science</dd>
+      <dt>Expected</dt><dd>PhD, Dec 2029</dd>
+      <dt>Methods</dt><dd>Python, R, PyTorch, transformers, LLM evaluation, causal and statistical modeling, network analysis, experiments</dd>
+    </dl>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <p>Reach me at <a href="mailto:YOUR_EMAIL@usc.edu">YOUR_EMAIL@usc.edu</a> · <a href="https://github.com/serenalyoko" target="_blank" rel="noopener">GitHub</a> · <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a></p>
+    <p style="margin-top:8px">© <span id="yr">2026</span> Siyi Zhou</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.filters button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    const f=b.dataset.f;
+    document.querySelectorAll('.work').forEach(w=>{
+      w.classList.toggle('hide', f!=='all' && !w.dataset.c.split(' ').includes(f));
+    });
+  });
+});
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
